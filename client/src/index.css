@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(224, 71.4%, 4.1%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(224, 71.4%, 4.1%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(224, 71.4%, 4.1%);
+  --primary: hsl(220.9, 39.3%, 11%);
+  --primary-foreground: hsl(210, 20%, 98%);
+  --secondary: hsl(220, 14.3%, 95.9%);
+  --secondary-foreground: hsl(220.9, 39.3%, 11%);
+  --muted: hsl(220, 14.3%, 95.9%);
+  --muted-foreground: hsl(220, 8.9%, 46.1%);
+  --accent: hsl(220, 14.3%, 95.9%);
+  --accent-foreground: hsl(220.9, 39.3%, 11%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(210, 20%, 98%);
+  --border: hsl(220, 13%, 91%);
+  --input: hsl(220, 13%, 91%);
+  --ring: hsl(224, 71.4%, 4.1%);
+  --chart-1: hsl(12, 76%, 61%);
+  --chart-2: hsl(173, 58%, 39%);
+  --chart-3: hsl(197, 37%, 24%);
+  --chart-4: hsl(43, 74%, 66%);
+  --chart-5: hsl(27, 87%, 67%);
+  --radius: 0.75rem;
+  
+  /* Garden-specific color variables */
+  --garden-primary: hsl(230, 67%, 63%);
+  --garden-secondary: hsl(272, 45%, 56%);
+  --garden-green: hsl(122, 45%, 55%);
+  --garden-green-dark: hsl(122, 45%, 45%);
+}
+
+.dark {
+  --background: hsl(224, 71.4%, 4.1%);
+  --foreground: hsl(210, 20%, 98%);
+  --card: hsl(224, 71.4%, 4.1%);
+  --card-foreground: hsl(210, 20%, 98%);
+  --popover: hsl(224, 71.4%, 4.1%);
+  --popover-foreground: hsl(210, 20%, 98%);
+  --primary: hsl(210, 20%, 98%);
+  --primary-foreground: hsl(220.9, 39.3%, 11%);
+  --secondary: hsl(215, 27.9%, 16.9%);
+  --secondary-foreground: hsl(210, 20%, 98%);
+  --muted: hsl(215, 27.9%, 16.9%);
+  --muted-foreground: hsl(217.9, 10.6%, 64.9%);
+  --accent: hsl(215, 27.9%, 16.9%);
+  --accent-foreground: hsl(210, 20%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(210, 20%, 98%);
+  --border: hsl(215, 27.9%, 16.9%);
+  --input: hsl(215, 27.9%, 16.9%);
+  --ring: hsl(216, 12.2%, 83.9%);
+  --chart-1: hsl(220, 70%, 50%);
+  --chart-2: hsl(160, 60%, 45%);
+  --chart-3: hsl(30, 80%, 55%);
+  --chart-4: hsl(280, 65%, 60%);
+  --chart-5: hsl(340, 75%, 55%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom Garden Theme Styles */
+.garden-gradient-bg {
+  background: linear-gradient(135deg, hsl(230, 67%, 63%) 0%, hsl(272, 45%, 56%) 100%);
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.plant-card-hover {
+  transition: all 0.3s ease;
+}
+
+.plant-card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Garden color utilities */
+.text-garden-primary {
+  color: hsl(230, 67%, 63%);
+}
+
+.text-garden-secondary {
+  color: hsl(272, 45%, 56%);
+}
+
+.text-garden-green {
+  color: hsl(122, 45%, 55%);
+}
+
+.text-garden-green-dark {
+  color: hsl(122, 45%, 45%);
+}
+
+.bg-garden-primary {
+  background-color: hsl(230, 67%, 63%);
+}
+
+.bg-garden-secondary {
+  background-color: hsl(272, 45%, 56%);
+}
+
+.bg-garden-green {
+  background-color: hsl(122, 45%, 55%);
+}
+
+.bg-garden-green-dark {
+  background-color: hsl(122, 45%, 45%);
+}
+
+.border-garden-green {
+  border-color: hsl(122, 45%, 55%);
+}
+
+.hover\:bg-garden-green:hover {
+  background-color: hsl(122, 45%, 55%);
+}
+
+.hover\:bg-garden-green-dark:hover {
+  background-color: hsl(122, 45%, 45%);
+}
+
+.hover\:text-garden-green:hover {
+  color: hsl(122, 45%, 55%);
+}
+
+.hover\:text-garden-green-dark:hover {
+  color: hsl(122, 45%, 45%);
+}
+
+/* Gradient backgrounds */
+.from-garden-primary {
+  --tw-gradient-from: hsl(230, 67%, 63%);
+  --tw-gradient-to: hsl(230, 67%, 63%, 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.to-garden-secondary {
+  --tw-gradient-to: hsl(272, 45%, 56%);
+}
+
+.from-garden-green {
+  --tw-gradient-from: hsl(122, 45%, 55%);
+  --tw-gradient-to: hsl(122, 45%, 55%, 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.to-garden-green-dark {
+  --tw-gradient-to: hsl(122, 45%, 45%);
+}
+
+/* Loading animation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Focus ring colors */
+.focus\:ring-garden-green:focus {
+  --tw-ring-color: hsl(122, 45%, 55%);
+}
+
+/* Garden green with opacity */
+.bg-garden-green\/10 {
+  background-color: hsl(122, 45%, 55%, 0.1);
+}
+
+.bg-garden-green\/20 {
+  background-color: hsl(122, 45%, 55%, 0.2);
+}
+
+.hover\:bg-garden-green\/20:hover {
+  background-color: hsl(122, 45%, 55%, 0.2);
+}
