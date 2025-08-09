@@ -15,7 +15,7 @@ git config --global user.email "harleygurl1977@example.com"
 
 REM Personal Access Token configured
 set USERNAME=harleygurl1977
-set TOKEN=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
+set TOKEN=YOUR_GITHUB_TOKEN_HERE
 set REPO_URL=https://%USERNAME%:%TOKEN%@github.com/harleygurl1977/MusicMentor.git
 set BRANCH=main
 

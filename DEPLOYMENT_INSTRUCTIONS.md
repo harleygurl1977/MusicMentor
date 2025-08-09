@@ -43,7 +43,7 @@ After pushing to GitHub, you can deploy to Replit:
 2. Click "Import from GitHub"
 3. Enter: `harleygurl1977/MusicMentor`
 4. Set up your environment variables in Replit:
-   - `OPENAI_API_KEY`: `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`
+   - `OPENAI_API_KEY`: `your_openai_api_key_here`
    - `DATABASE_URL`: Your Neon database URL (if using)
    - `SESSION_SECRET`: Any random string for session encryption
    - `REPL_ID`: Your Replit app ID
@@ -56,8 +56,8 @@ After pushing to GitHub, you can deploy to Replit:
 Create a `.env` file with these variables:
 
 ```env
-# OpenAI API Key (already configured)
-OPENAI_API_KEY=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
+# OpenAI API Key (configure with your key)
+OPENAI_API_KEY=your_openai_api_key_here
 
 # Database (if using Neon)
 DATABASE_URL=your_neon_database_url_here
