@@ -111,14 +111,15 @@ export default function AddPlantModal({ isOpen, onClose }: AddPlantModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="w-[95vw] max-w-2xl max-h-[90vh] overflow-y-auto" data-testid="modal-add-plant">
-        <DialogHeader>
+      <DialogContent className="w-[95vw] max-w-2xl max-h-[85vh] flex flex-col" data-testid="modal-add-plant">
+        <DialogHeader className="flex-shrink-0">
           <DialogTitle className="text-2xl font-bold text-gray-800" data-testid="text-modal-title">
             Add New Plant
           </DialogTitle>
         </DialogHeader>
         
-        <form onSubmit={handleSubmit} className="space-y-4 p-1">
+        <div className="flex-1 overflow-y-auto pr-1">
+          <form onSubmit={handleSubmit} className="space-y-4 pb-6">
           <div>
             <Label htmlFor="name" className="text-sm font-medium text-gray-700 mb-2 block">
               Plant Name *
@@ -234,7 +235,7 @@ export default function AddPlantModal({ isOpen, onClose }: AddPlantModalProps) {
             />
           </div>
 
-          <div className="flex space-x-4 pt-4">
+          <div className="flex space-x-4 pt-4 sticky bottom-0 bg-white dark:bg-gray-800 pb-2">
             <Button 
               type="button" 
               variant="outline" 
@@ -253,7 +254,8 @@ export default function AddPlantModal({ isOpen, onClose }: AddPlantModalProps) {
               {addPlantMutation.isPending ? "Adding..." : "Add Plant"}
             </Button>
           </div>
-        </form>
+          </form>
+        </div>
       </DialogContent>
     </Dialog>
   );
