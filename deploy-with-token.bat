@@ -1,14 +1,19 @@
 @echo off
 echo ========================================
 echo Garden App GitHub Deployment Script
+echo Using Personal Access Token
 echo ========================================
 echo.
 
-REM Set variables
+REM Personal Access Token configured
 set USERNAME=harleygurl1977
-set PASSWORD=Lenore77!!
-set REPO_URL=https://%USERNAME%:%PASSWORD%@github.com/harleygurl1977/MusicMentor.git
+set TOKEN=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
+set REPO_URL=https://%USERNAME%:%TOKEN%@github.com/harleygurl1977/MusicMentor.git
 set BRANCH=main
+
+echo Configuring Git credentials...
+git config --global user.name "harleygurl1977"
+git config --global user.email "harleygurl1977@example.com"
 
 echo Initializing local git repository...
 git init
@@ -20,7 +25,7 @@ echo Creating commit with validation fixes...
 git commit -m "🌱 Deploy validated Garden App with OpenAI integration
 
 ✅ Fixed OpenAI API key configuration with lazy initialization
-✅ Removed weather service fallbacks (no dummy data)
+✅ Removed weather service fallbacks (no dummy data)  
 ✅ Fixed TypeScript type errors in storage and auth
 ✅ Added dotenv configuration for environment variables
 ✅ Fixed null safety issues in database operations
