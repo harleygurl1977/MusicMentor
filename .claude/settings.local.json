@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir:*)",
+      "Bash(npm run check:*)",
+      "Bash(npm install)",
+      "Bash(npm install:*)",
+      "Bash(npx tsx:*)",
+      "mcp__github__search_repositories",
+      "mcp__github__get_file_contents",
+      "mcp__github__push_files"
+    ],
+    "deny": []
+  }
+}

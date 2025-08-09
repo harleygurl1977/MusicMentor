@@ -1,12 +1,18 @@
 import OpenAI from "openai";
 
-if (!process.env.OPENAI_API_KEY) {
-  throw new Error("OPENAI_API_KEY environment variable is required");
-}
+let openai: OpenAI | null = null;
 
-const openai = new OpenAI({ 
-  apiKey: process.env.OPENAI_API_KEY
-});
+function getOpenAI() {
+  if (!openai) {
+    if (!process.env.OPENAI_API_KEY) {
+      throw new Error("OPENAI_API_KEY environment variable is required");
+    }
+    openai = new OpenAI({ 
+      apiKey: process.env.OPENAI_API_KEY
+    });
+  }
+  return openai;
+}
 
 interface GardeningTipRequest {
   category?: string;
@@ -71,7 +77,7 @@ Respond with JSON in this format:
   "weatherRelevant": boolean indicating if this tip is weather-dependent
 }`;
 
-    const response = await openai.chat.completions.create({
+    const response = await getOpenAI().chat.completions.create({
       model: "gpt-4o", // the newest OpenAI model is "gpt-4o" which was released May 13, 2024. do not change this unless explicitly requested by the user
       messages: [
         {
@@ -109,7 +115,7 @@ export async function analyzePlantHealth(plantImage: string, plantDescription: s
   confidence: number;
 }> {
   try {
-    const response = await openai.chat.completions.create({
+    const response = await getOpenAI().chat.completions.create({
       model: "gpt-4o",
       messages: [
         {

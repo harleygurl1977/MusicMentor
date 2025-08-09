@@ -132,7 +132,7 @@ export class DatabaseStorage implements IStorage {
     const result = await db
       .delete(plants)
       .where(and(eq(plants.id, id), eq(plants.userId, userId)));
-    return result.rowCount > 0;
+    return (result.rowCount ?? 0) > 0;
   }
 
   async getPlantsNeedingWater(userId: string): Promise<Plant[]> {
@@ -197,7 +197,7 @@ export class DatabaseStorage implements IStorage {
       .update(careEvents)
       .set({ completed: true })
       .where(and(eq(careEvents.id, id), eq(careEvents.userId, userId)));
-    return result.rowCount > 0;
+    return (result.rowCount ?? 0) > 0;
   }
 
   // AI Tips
@@ -222,7 +222,7 @@ export class DatabaseStorage implements IStorage {
       .update(aiTips)
       .set({ isBookmarked: bookmark })
       .where(and(eq(aiTips.id, id), eq(aiTips.userId, userId)));
-    return result.rowCount > 0;
+    return (result.rowCount ?? 0) > 0;
   }
 
   async markTipHelpful(id: string, userId: string, helpful: boolean): Promise<boolean> {
@@ -230,7 +230,7 @@ export class DatabaseStorage implements IStorage {
       .update(aiTips)
       .set({ isHelpful: helpful })
       .where(and(eq(aiTips.id, id), eq(aiTips.userId, userId)));
-    return result.rowCount > 0;
+    return (result.rowCount ?? 0) > 0;
   }
 
   // Weather

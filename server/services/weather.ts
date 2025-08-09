@@ -20,7 +20,13 @@ export async function getWeatherData(location: string): Promise<{
   location: string;
 } | null> {
   try {
-    const apiKey = process.env.OPENWEATHER_API_KEY || process.env.WEATHER_API_KEY || "default_key";
+    const apiKey = process.env.OPENWEATHER_API_KEY || process.env.WEATHER_API_KEY;
+    
+    if (!apiKey) {
+      console.warn("No weather API key configured. Weather data will not be available.");
+      return null;
+    }
+    
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(location)}&appid=${apiKey}&units=fahrenheit`;
     
     const response = await fetch(url);
