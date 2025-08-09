@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";
 import { isUnauthorizedError } from "@/lib/authUtils";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -116,6 +116,9 @@ export default function AddPlantModal({ isOpen, onClose }: AddPlantModalProps) {
           <DialogTitle className="text-2xl font-bold text-gray-800" data-testid="text-modal-title">
             Add New Plant
           </DialogTitle>
+          <DialogDescription className="text-gray-600">
+            Add a new plant to your garden collection with care details and tracking information.
+          </DialogDescription>
         </DialogHeader>
         
         <div className="flex-1 overflow-y-auto pr-1">

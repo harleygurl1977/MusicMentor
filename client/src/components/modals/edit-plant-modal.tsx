@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";
 import { isUnauthorizedError } from "@/lib/authUtils";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -146,6 +146,9 @@ export default function EditPlantModal({ isOpen, onClose, plant }: EditPlantModa
           <DialogTitle className="text-2xl font-bold text-gray-800" data-testid="text-modal-title">
             Edit Plant: {plant.name}
           </DialogTitle>
+          <DialogDescription className="text-gray-600">
+            Update your plant's information, care schedule, and current status.
+          </DialogDescription>
         </DialogHeader>
         
         <div className="flex-1 overflow-y-auto pr-1">

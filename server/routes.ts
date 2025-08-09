@@ -247,13 +247,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const tipData = await generateGardeningTip({
         category,
         season,
-        skillLevel: skillLevel || user?.experienceLevel,
-        location: user?.location,
+        skillLevel: skillLevel || user?.experienceLevel || 'beginner',
+        location: user?.location || undefined,
         weatherConditions,
         userPlants: userPlants.map(plant => ({
           name: plant.name,
           category: plant.category,
-          plantedDate: plant.plantedDate?.toISOString() || ''
+          plantedDate: plant.plantedDate ? new Date(plant.plantedDate).toISOString() : ''
         }))
       });
 
@@ -312,7 +312,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       let weather = await storage.getWeatherData(location);
       
       // If no cached data or data is older than 30 minutes, fetch fresh data
-      if (!weather || (Date.now() - weather.updatedAt.getTime()) > 30 * 60 * 1000) {
+      if (!weather || (weather.updatedAt && Date.now() - new Date(weather.updatedAt).getTime() > 30 * 60 * 1000)) {
         const freshWeather = await getWeatherData(location);
         if (freshWeather) {
           weather = await storage.upsertWeatherData({
