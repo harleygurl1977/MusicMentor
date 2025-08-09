@@ -6,6 +6,7 @@ import { isUnauthorizedError } from "@/lib/authUtils";
 import Navbar from "@/components/layout/navbar";
 import PlantCard from "@/components/plant-card";
 import AddPlantModal from "@/components/modals/add-plant-modal";
+import EditPlantModal from "@/components/modals/edit-plant-modal";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -35,6 +36,8 @@ export default function Plants() {
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const [showAddModal, setShowAddModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [editingPlant, setEditingPlant] = useState<Plant | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("all");
   const [statusFilter, setStatusFilter] = useState("all");
@@ -91,6 +94,16 @@ export default function Plants() {
       });
     },
   });
+
+  const handleEditPlant = (plant: Plant) => {
+    setEditingPlant(plant);
+    setShowEditModal(true);
+  };
+
+  const handleCloseEditModal = () => {
+    setShowEditModal(false);
+    setEditingPlant(null);
+  };
 
   if (isLoading) {
     return <div className="min-h-screen garden-gradient-bg flex items-center justify-center">
@@ -249,6 +262,7 @@ export default function Plants() {
                 plant={plant} 
                 onWater={() => waterPlantMutation.mutate(plant.id)}
                 isWatering={waterPlantMutation.isPending}
+                onEdit={() => handleEditPlant(plant)}
               />
             ))}
           </div>
@@ -259,6 +273,13 @@ export default function Plants() {
       <AddPlantModal 
         isOpen={showAddModal} 
         onClose={() => setShowAddModal(false)} 
+      />
+
+      {/* Edit Plant Modal */}
+      <EditPlantModal 
+        isOpen={showEditModal} 
+        onClose={handleCloseEditModal}
+        plant={editingPlant}
       />
     </div>
   );

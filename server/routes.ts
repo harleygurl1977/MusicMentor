@@ -88,6 +88,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  app.patch('/api/plants/:id', isAuthenticated, async (req: any, res) => {
+    try {
+      const userId = req.user.claims.sub;
+      const updates = insertPlantSchema.partial().parse(req.body);
+      const plant = await storage.updatePlant(req.params.id, updates, userId);
+      if (!plant) {
+        return res.status(404).json({ message: "Plant not found" });
+      }
+      res.json(plant);
+    } catch (error) {
+      console.error("Error updating plant:", error);
+      res.status(400).json({ message: "Failed to update plant" });
+    }
+  });
+
   app.delete('/api/plants/:id', isAuthenticated, async (req: any, res) => {
     try {
       const userId = req.user.claims.sub;

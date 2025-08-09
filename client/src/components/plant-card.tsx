@@ -24,9 +24,10 @@ interface PlantCardProps {
   plant: Plant;
   onWater: () => void;
   isWatering: boolean;
+  onEdit?: () => void;
 }
 
-export default function PlantCard({ plant, onWater, isWatering }: PlantCardProps) {
+export default function PlantCard({ plant, onWater, isWatering, onEdit }: PlantCardProps) {
   const getStatusColor = (status: string) => {
     switch (status.toLowerCase()) {
       case 'healthy':
@@ -135,6 +136,7 @@ export default function PlantCard({ plant, onWater, isWatering }: PlantCardProps
             variant="outline" 
             size="sm"
             className="px-3 border-gray-200 hover:bg-gray-50"
+            onClick={onEdit}
             data-testid={`button-edit-${plant.id}`}
           >
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
