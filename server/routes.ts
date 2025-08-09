@@ -214,36 +214,50 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   app.post('/api/ai-tips/generate', isAuthenticated, async (req: any, res) => {
     try {
+      console.log("Starting AI tip generation...");
       const userId = req.user.claims.sub;
       const { category, season, skillLevel } = req.body;
+      console.log("Request body:", { category, season, skillLevel });
       
       // Get user's location and plants for context
+      console.log("Fetching user data...");
       const user = await storage.getUser(userId);
+      console.log("User data:", user ? "found" : "not found");
+      
       const userPlants = await storage.getPlants(userId);
+      console.log("User plants:", userPlants.length, "plants found");
       
       // Get weather data if location is available
       let weatherConditions;
       if (user?.location) {
-        const weather = await getWeatherData(user.location);
-        if (weather) {
-          weatherConditions = {
-            temperature: weather.temperature,
-            humidity: weather.humidity,
-            condition: weather.condition
-          };
-          
-          // Update weather data in database
-          await storage.upsertWeatherData({
-            location: user.location,
-            temperature: weather.temperature,
-            humidity: weather.humidity,
-            condition: weather.condition,
-            description: weather.description,
-            icon: weather.icon
-          });
+        console.log("Fetching weather data for:", user.location);
+        try {
+          const weather = await getWeatherData(user.location);
+          if (weather) {
+            weatherConditions = {
+              temperature: weather.temperature,
+              humidity: weather.humidity,
+              condition: weather.condition
+            };
+            
+            // Update weather data in database
+            await storage.upsertWeatherData({
+              location: user.location,
+              temperature: weather.temperature,
+              humidity: weather.humidity,
+              condition: weather.condition,
+              description: weather.description,
+              icon: weather.icon
+            });
+            console.log("Weather data fetched and stored");
+          }
+        } catch (weatherError) {
+          console.warn("Weather data fetch failed:", weatherError);
+          // Continue without weather data
         }
       }
 
+      console.log("Calling OpenAI to generate tip...");
       const tipData = await generateGardeningTip({
         category,
         season,
@@ -256,7 +270,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
           plantedDate: plant.plantedDate ? new Date(plant.plantedDate).toISOString() : ''
         }))
       });
+      console.log("OpenAI tip generated successfully");
 
+      console.log("Saving tip to database...");
       const tip = await storage.createAiTip({
         userId,
         category: tipData.category,
@@ -265,11 +281,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
         tags: tipData.tags,
         weatherConditions: weatherConditions ? JSON.stringify(weatherConditions) : null
       });
+      console.log("Tip saved to database successfully");
 
       res.status(201).json(tip);
     } catch (error) {
-      console.error("Error generating AI tip:", error);
-      res.status(500).json({ message: "Failed to generate AI tip" });
+      console.error("Error generating AI tip - Full error details:", error);
+      console.error("Error stack:", error instanceof Error ? error.stack : "No stack trace");
+      res.status(500).json({ 
+        message: "Failed to generate AI tip", 
+        error: error instanceof Error ? error.message : "Unknown error"
+      });
     }
   });
 
