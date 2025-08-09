@@ -5,7 +5,9 @@ echo ========================================
 echo.
 
 REM Set variables
-set REPO_URL=https://harleygurl1977:Lenore77!!@github.com/harleygurl1977/MusicMentor.git
+set USERNAME=harleygurl1977
+set PASSWORD=Lenore77!!
+set REPO_URL=https://%USERNAME%:%PASSWORD%@github.com/harleygurl1977/MusicMentor.git
 set BRANCH=main
 
 echo Initializing local git repository...
