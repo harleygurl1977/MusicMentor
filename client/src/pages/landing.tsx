@@ -3,10 +3,10 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export default function Landing() {
   return (
-    <div className="min-h-screen garden-gradient-bg flex items-center justify-center p-4">
-      <div className="max-w-4xl mx-auto text-center">
+    <div className="min-h-screen garden-gradient-bg flex items-center justify-center p-2 sm:p-4">
+      <div className="w-full max-w-4xl mx-auto text-center">
         <Card className="glass-effect border-0 shadow-2xl">
-          <CardContent className="p-12">
+          <CardContent className="p-4 sm:p-8 md:p-12">
             <div className="flex items-center justify-center mb-8">
               <div className="p-4 bg-gradient-to-r from-garden-green to-garden-green-dark rounded-2xl mr-4">
                 <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -14,51 +14,51 @@ export default function Landing() {
                 </svg>
               </div>
               <div>
-                <h1 className="text-5xl font-bold text-gray-800 mb-2">GardenAI</h1>
-                <p className="text-xl text-gray-600">Your Smart Gardening Companion</p>
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-2">GardenAI</h1>
+                <p className="text-base sm:text-lg md:text-xl text-gray-600">Your Smart Gardening Companion</p>
               </div>
             </div>
             
-            <p className="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base md:text-lg text-gray-700 mb-6 md:mb-8 max-w-2xl mx-auto px-2">
               Transform your gardening experience with AI-powered tips, plant tracking, 
               and personalized care recommendations. Join thousands of gardeners growing smarter, not harder.
             </p>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-              <div className="text-center p-6 bg-garden-green/10 rounded-xl">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-6 md:mb-10">
+              <div className="text-center p-4 md:p-6 bg-garden-green/10 rounded-xl">
                 <div className="w-12 h-12 mx-auto mb-4 bg-garden-green text-white rounded-full flex items-center justify-center">
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">AI-Powered Tips</h3>
-                <p className="text-gray-600 text-sm">Get personalized gardening advice based on your plants, location, and weather conditions.</p>
+                <h3 className="text-base md:text-lg font-semibold text-gray-800 mb-2">AI-Powered Tips</h3>
+                <p className="text-gray-600 text-xs md:text-sm">Get personalized gardening advice based on your plants, location, and weather conditions.</p>
               </div>
               
-              <div className="text-center p-6 bg-blue-50 rounded-xl">
+              <div className="text-center p-4 md:p-6 bg-blue-50 rounded-xl">
                 <div className="w-12 h-12 mx-auto mb-4 bg-blue-500 text-white rounded-full flex items-center justify-center">
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 4a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1V8zm8 0a1 1 0 011-1h4a1 1 0 011 1v2a1 1 0 01-1 1h-4a1 1 0 01-1-1V8z" clipRule="evenodd" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">Plant Tracking</h3>
-                <p className="text-gray-600 text-sm">Monitor your plants' health, track watering schedules, and never miss important care tasks.</p>
+                <h3 className="text-base md:text-lg font-semibold text-gray-800 mb-2">Plant Tracking</h3>
+                <p className="text-gray-600 text-xs md:text-sm">Monitor your plants' health, track watering schedules, and never miss important care tasks.</p>
               </div>
               
-              <div className="text-center p-6 bg-purple-50 rounded-xl">
+              <div className="text-center p-4 md:p-6 bg-purple-50 rounded-xl">
                 <div className="w-12 h-12 mx-auto mb-4 bg-purple-500 text-white rounded-full flex items-center justify-center">
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">Smart Calendar</h3>
-                <p className="text-gray-600 text-sm">Plan your garden activities with an intelligent calendar that adapts to seasons and weather.</p>
+                <h3 className="text-base md:text-lg font-semibold text-gray-800 mb-2">Smart Calendar</h3>
+                <p className="text-gray-600 text-xs md:text-sm">Plan your garden activities with an intelligent calendar that adapts to seasons and weather.</p>
               </div>
             </div>
             
             <Button 
               size="lg"
-              className="bg-gradient-to-r from-garden-green to-garden-green-dark hover:shadow-lg transition-all duration-300 text-lg px-8 py-6"
+              className="bg-gradient-to-r from-garden-green to-garden-green-dark hover:shadow-lg transition-all duration-300 text-sm sm:text-base md:text-lg px-4 sm:px-6 md:px-8 py-3 sm:py-4 md:py-6 w-full sm:w-auto"
               onClick={() => {
                 window.location.href = "/api/login";
               }}
@@ -70,7 +70,7 @@ export default function Landing() {
               </svg>
             </Button>
             
-            <p className="text-sm text-gray-500 mt-4">
+            <p className="text-xs sm:text-sm text-gray-500 mt-3 md:mt-4 px-2">
               Free to start • No credit card required • Join our growing community
             </p>
           </CardContent>

@@ -111,14 +111,14 @@ export default function AddPlantModal({ isOpen, onClose }: AddPlantModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-md" data-testid="modal-add-plant">
+      <DialogContent className="w-[95vw] max-w-2xl max-h-[90vh] overflow-y-auto" data-testid="modal-add-plant">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-gray-800" data-testid="text-modal-title">
             Add New Plant
           </DialogTitle>
         </DialogHeader>
         
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4 p-1">
           <div>
             <Label htmlFor="name" className="text-sm font-medium text-gray-700 mb-2 block">
               Plant Name *

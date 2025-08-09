@@ -112,8 +112,8 @@ export default function Plants() {
     return matchesSearch && matchesCategory && matchesStatus;
   }) || [];
 
-  const categories = [...new Set(plants?.map(p => p.category) || [])];
-  const statuses = [...new Set(plants?.map(p => p.status) || [])];
+  const categories = Array.from(new Set(plants?.map(p => p.category) || []));
+  const statuses = Array.from(new Set(plants?.map(p => p.status) || []));
 
   return (
     <div className="min-h-screen garden-gradient-bg">
